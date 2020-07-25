@@ -38,7 +38,7 @@ If you wish to contribute to this project, please feel free to. Any inqueries, p
   <li>Utils
     <ul>
       <li>Teleport Utils ✔</li>
-      <li>Time Converter 0%</li>
+      <li>Time Converter ✔</li>
     </ul>
   </li>
   <li><b>ADD MAVEN SUPPORT!</b></li>
