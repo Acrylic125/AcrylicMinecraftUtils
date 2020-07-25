@@ -3,17 +3,12 @@ package com.acrylic.acrylicutils.Commands;
 import com.acrylic.acrylicutils.AcrylicUtils;
 import com.acrylic.version_1_8.EntityAnimator.EntityEquipment;
 import com.acrylic.version_latest.Animations.HandRotatorAnimation;
-import com.acrylic.version_latest.Animations.HeadRotatorAnimation;
 import com.acrylic.version_latest.Animations.ItemDangle;
-import com.acrylic.version_latest.EntityAnimators.Entities.ArmorStandAnimator;
 import com.acrylic.version_latest.EntityAnimators.Entities.GiantAnimator;
 import com.acrylic.version_latest.EntityAnimators.EntityAnimator;
-import com.acrylic.version_latest.Messages.Symbols;
-import com.acrylic.version_latest.Shapes.Circle;
-import com.acrylic.version_latest.Utils.Teleport;
+import com.acrylic.version_latest.Utils.Time;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -29,7 +24,10 @@ public class TestCommand implements CommandExecutor{
 
         Location center = p.getLocation().clone();
 
-        ItemDangle itemDangle = new ItemDangle(p);
+        Time time = new Time().setColorScheme("&6","&6");
+        Bukkit.broadcastMessage(time.convert(Double.parseDouble(args[0])));
+
+        /**ItemDangle itemDangle = new ItemDangle(p);
         for (int i = 1;i<=Integer.parseInt(args[0]);i++) {
             EntityAnimator entityManager = new GiantAnimator(center);
             entityManager.setEntityEquipment(
@@ -54,7 +52,7 @@ public class TestCommand implements CommandExecutor{
                 i++;
             }
         }.runTaskTimer(AcrylicUtils.getAcrylicUtils(), 1, 1);
-
+**/
 
          return true;
     }
