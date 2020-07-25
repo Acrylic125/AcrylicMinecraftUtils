@@ -1,0 +1,4 @@
+name: Version_LATEST
+version: ${project.version}
+main: com.acrylic.version_latest.Version_LATEST
+api-version: 1.16

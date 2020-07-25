@@ -1,0 +1,8 @@
+name: AcrylicUtils
+version: ${project.version}
+main: com.acrylic.acrylicutils.AcrylicUtils
+api-version: 1.15
+commands:
+  test:
+    description: Your description
+    usage: /<command>
