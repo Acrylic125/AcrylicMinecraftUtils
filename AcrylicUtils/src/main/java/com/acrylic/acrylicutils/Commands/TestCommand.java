@@ -19,10 +19,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
-
-import java.lang.reflect.Method;
-import java.util.function.Supplier;
 
 public class TestCommand implements CommandExecutor{
 
@@ -59,26 +55,6 @@ public class TestCommand implements CommandExecutor{
             }
         }.runTaskTimer(AcrylicUtils.getAcrylicUtils(), 1, 1);
 
-        /**Vector vector = center.getDirection().normalize();
-
-        EntityAnimator entityManager = new ArmorStandAnimator(center);
-        entityManager.setEntityEquipment(
-                new EntityEquipment(entityManager.getEntity()).setHelmet(p.getItemInHand()));
-        HeadRotatorAnimation itemDangle = new HeadRotatorAnimation(entityManager).setRotation(20).setTilted();
-        itemDangle.setHologram("&f10000 &c&l" + Symbols.HEART.getSymbol(), "", "&7Break the &7&nBeacon&r&7 to destroy the core.", "&5&lCorrupted Conquest Core");
-
-        vector.multiply(0.2);
-
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-               //Location loc = itemDangle.getLocation().add(vector);
-                Location loc = itemDangle.getLocation().add(vector);
-                itemDangle.getHolograms().teleport(loc);
-                itemDangle.teleport(loc);
-            }
-        }.runTaskTimer(AcrylicUtils.getAcrylicUtils(), 1, 1);
-        **/
 
          return true;
     }
