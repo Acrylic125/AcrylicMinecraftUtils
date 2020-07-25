@@ -22,7 +22,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class TestCommand implements CommandExecutor{
 
-    //Test command!
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
