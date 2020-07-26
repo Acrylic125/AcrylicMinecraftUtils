@@ -46,4 +46,4 @@ If you wish to contribute to this project, please feel free to. Any inqueries, p
 <br>
 More features will be added as the project grows. For now, the main features must be completed before I proceed on to the projects I will be using this for. 
 </p>
-
+[![](https://jitpack.io/v/Acrylic125/AcrylicMinecraftUtils.svg)](https://jitpack.io/#Acrylic125/AcrylicMinecraftUtils)
