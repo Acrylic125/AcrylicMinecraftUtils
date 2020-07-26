@@ -13,7 +13,7 @@
     <groupId>com.Acrylic</groupId>
     <artifactId>Version_LATEST</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>Version_LATEST</name>
 
