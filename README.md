@@ -47,3 +47,16 @@ If you wish to contribute to this project, please feel free to. Any inqueries, p
 More features will be added as the project grows. For now, the main features must be completed before I proceed on to the projects I will be using this for. 
 </p>
 
+```
+<repository>
+	 <id>jitpack.io</id>
+	 <url>https://jitpack.io</url>
+</repository>
+```
+```
+<dependency>
+	 <groupId>com.github.Acrylic125</groupId>
+	 <artifactId>AcrylicMinecraftUtils</artifactId>
+	 <version>Version</version>
+</dependency>
+```
