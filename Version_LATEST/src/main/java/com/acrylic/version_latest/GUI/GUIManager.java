@@ -4,6 +4,7 @@ import com.acrylic.version_latest.Annotations.ForEvents;
 import com.acrylic.version_latest.Annotations.NotForEvents;
 import com.acrylic.version_latest.Items.ItemCreator;
 import com.acrylic.version_latest.Messages.ChatUtils;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class GUIManager {
 
+    @Getter
     private Inventory inventory;
     private String guiName;
 
@@ -24,7 +26,7 @@ public class GUIManager {
      */
     public GUIManager(String guiName, int rows) {
         this.guiName = ChatUtils.get(guiName);
-        inventory = Bukkit.createInventory(null,rows * 6,this.guiName);
+        inventory = Bukkit.createInventory(null,rows * 9,this.guiName);
     }
 
     /**

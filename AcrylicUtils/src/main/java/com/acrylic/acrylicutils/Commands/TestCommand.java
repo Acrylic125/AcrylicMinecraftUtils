@@ -2,7 +2,9 @@ package com.acrylic.acrylicutils.Commands;
 
 import com.acrylic.acrylicutils.AcrylicUtils;
 import com.acrylic.acrylicutils.Commands.Test.EntityTest;
-import com.acrylic.version_latest.Items.ItemCreator;
+import com.acrylic.version_1_8.ItemCreator;
+import com.acrylic.version_latest.GUI.GUIManager;
+import com.acrylic.version_latest.GUI.GUIMiddleSlot;
 import com.mongodb.*;
 import dev.morphia.Datastore;
 import dev.morphia.Key;
@@ -25,8 +27,13 @@ public class TestCommand implements CommandExecutor{
 
         Player p = (Player) sender;
 
-
-
+        GUIManager guiManager = new GUIManager("Test",6);
+        GUIMiddleSlot guiMiddleSlot = new GUIMiddleSlot(guiManager.getInventory(),1,Integer.parseInt(args[0]));
+        for (int i = 1;i<=Integer.parseInt(args[1]);i++) {
+            guiMiddleSlot.add(new ItemCreator(Material.DIAMOND).setQuantity(i).getItem());
+        }
+        guiManager.show(p);
+        guiMiddleSlot.construct();
         /**MongoClient client = AcrylicUtils.getMongoClient();
         Morphia morphia = new Morphia().map(EntityTest.class);
 
