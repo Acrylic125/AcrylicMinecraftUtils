@@ -55,8 +55,8 @@ More features will be added as the project grows. For now, the main features mus
 ```
 ```
 <dependency>
-	 <groupId>com.github.Acrylic125</groupId>
-	 <artifactId>AcrylicMinecraftUtils</artifactId>
-	 <version>Version</version>
+            <groupId>com.github.Acrylic125</groupId>
+            <artifactId>AcrylicMinecraftUtils</artifactId>
+            <version>Version-1.1a</version>
 </dependency>
 ```
