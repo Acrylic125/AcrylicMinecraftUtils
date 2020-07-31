@@ -1,6 +1,7 @@
 package com.acrylic.version_latest.Items;
 
 import com.acrylic.version_latest.Messages.ChatUtils;
+import dev.morphia.annotations.Embedded;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Embedded
 public class ItemCreator implements ItemInterface{
 
     ItemStack item;

@@ -13,6 +13,7 @@
         <module>AcrylicUtils</module>
         <module>Version_LATEST</module>
         <module>Version_1_8</module>
+        <module>Database</module>
     </modules>
 
     <name>AcrylicMinecraftUtils</name>
@@ -43,9 +44,6 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
-                        <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -72,6 +70,10 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>mongo-repo</id>
+            <url>https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-legacy/4.0.3</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -91,6 +93,16 @@
             <artifactId>lombok</artifactId>
             <version>1.18.2</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>dev.morphia.morphia</groupId>
+            <artifactId>core</artifactId>
+            <version>1.6.0-RC1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-legacy</artifactId>
+            <version>4.0.3</version>
         </dependency>
     </dependencies>
 </project>
