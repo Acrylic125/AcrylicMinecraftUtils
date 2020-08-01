@@ -1,6 +1,7 @@
 package com.acrylic.version_latest.Animations;
 
 import com.acrylic.version_latest.EntityAnimators.Entities.ArmorStandAnimator;
+import com.acrylic.version_latest.EntityAnimators.EntityAnimator;
 import com.acrylic.version_latest.Messages.ChatUtils;
 import com.acrylic.version_latest.Utils.Teleport;
 import lombok.Getter;
@@ -89,6 +90,7 @@ public class Holograms {
             hologram.setCustomName(hologramText);
             setup();
         }
+
         public Hologram(Location location, int index, ArmorStand hologram, float yOffset) {
             offsetHeight = (index * OFFSET_HEIGHT) + yOffset;
             Teleport.tp(hologram,location.clone().add(0,offsetHeight,0));

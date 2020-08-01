@@ -1,6 +1,7 @@
 package com.acrylic.version_latest.EntityAnimators;
 
 import com.acrylic.version_latest.EntityAnimators.Equipment.AbstractEntityEquipment;
+import org.bukkit.Location;
 import org.bukkit.entity.LivingEntity;
 
 /**
@@ -15,5 +16,5 @@ public interface EntityAnimator {
     EntityAnimator getInstance();
 
     LivingEntity getEntity();
-
+    
 }
