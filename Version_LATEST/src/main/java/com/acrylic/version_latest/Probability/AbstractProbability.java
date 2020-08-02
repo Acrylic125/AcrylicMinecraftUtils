@@ -40,7 +40,7 @@ public abstract class AbstractProbability {
     abstract float getNumber(float range1, float range2);
 
     protected double generateNumber(double range1, double range2) {
-        double base = Math.min(range1, range2);
+        double base = (range1 < range2) ? range1 : range2;
         return ((Math.abs(range2 - range1) + 1) * random) + base;
     }
 

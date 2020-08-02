@@ -69,7 +69,9 @@ public abstract class AbstractAnimations {
 
     public void delete() {
         entity.remove();
-        holograms.delete();
+        if (holograms != null) {
+            holograms.delete();
+        }
     }
 
     public abstract void teleport(Location location);

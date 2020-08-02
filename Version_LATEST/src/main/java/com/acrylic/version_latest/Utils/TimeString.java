@@ -1,8 +1,9 @@
 package com.acrylic.version_latest.Utils;
 
 import com.acrylic.version_latest.Messages.ChatUtils;
+import lombok.Builder;
 
-public class Time {
+public class TimeString extends MultiStringBase{
 
     private String week = "w";
     private String day = "d";
@@ -10,38 +11,35 @@ public class Time {
     private String min = "m";
     private String sec = "s";
 
-    private String colorNumber = "&f";
-    private String colorText = "&7";
+    public TimeString() { }
 
-    public Time() { }
-
-    public Time setWeek(String week) {
+    public TimeString setWeek(String week) {
         this.week = week;
         return this;
     }
 
-    public Time setDay(String day) {
+    public TimeString setDay(String day) {
         this.day = day;
         return this;
     }
 
-    public Time setHour(String hour) {
+    public TimeString setHour(String hour) {
         this.hour = hour;
         return this;
     }
 
-    public Time setMinute(String minute) {
+    public TimeString setMinute(String minute) {
         this.min = minute;
         return this;
     }
 
-    public Time setSecond(String second) {
+    public TimeString setSecond(String second) {
         this.sec = second;
         return this;
     }
 
-    public Time setColorScheme(String colorNumber, String colorText) {
-        this.colorNumber = colorNumber;
+    public TimeString setColorScheme(String colorNumber, String colorText) {
+        super.colorNumber = colorNumber;
         this.colorText = colorText;
         return this;
     }
@@ -68,6 +66,5 @@ public class Time {
         }
         return ChatUtils.get(timeAsString.toString().replaceFirst(" ",""));
     }
-
 
 }
