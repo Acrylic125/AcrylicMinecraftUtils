@@ -32,7 +32,6 @@ import org.bukkit.util.Vector;
  * vertex of the item.
  */
 
-@Getter
 public class HandRotatorAnimation extends AbstractAnimations {
 
     private final static EulerAngle DANGLE_EULER_ANGLE = new EulerAngle(-1.75, -0.7, 0);
@@ -72,6 +71,11 @@ public class HandRotatorAnimation extends AbstractAnimations {
         }
         loc.setDirection(difference);
         Teleport.tp(entity,loc);
+    }
+
+    @Override
+    public Location getLocation() {
+        return location;
     }
 
 

@@ -76,4 +76,6 @@ public abstract class AbstractAnimations {
 
     public abstract void teleport(Location location);
 
+    public abstract Location getLocation();
+
 }

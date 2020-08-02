@@ -42,6 +42,7 @@ public class HeadRotatorAnimation extends AbstractAnimations {
         return this;
     }
 
+    @Override
     public Location getLocation() {
         return entity.getLocation();
     }
