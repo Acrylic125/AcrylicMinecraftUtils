@@ -6,17 +6,15 @@ import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 import java.util.LinkedList;
 
+@Getter
 public class Holograms {
 
     /**
      * This is the offset height between each hiologram armor stand.
      */
-    @Getter
     protected final static float OFFSET_HEIGHT = 0.25f;
 
-    @Getter
     private LinkedList<Hologram> holograms = new LinkedList<>();
-    @Getter
     private Location location;
 
     /**

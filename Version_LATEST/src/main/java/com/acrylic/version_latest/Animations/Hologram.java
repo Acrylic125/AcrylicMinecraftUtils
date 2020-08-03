@@ -6,10 +6,10 @@ import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 
+@Getter
 public class Hologram {
-    @Getter
+
     private final float offsetHeight;
-    @Getter
     private final ArmorStand hologram;
 
     public Hologram(Location location, int index, String hologramText, float yOffset) {
@@ -22,9 +22,17 @@ public class Hologram {
 
     public Hologram(Location location, int index, ArmorStand hologram, float yOffset) {
         offsetHeight = (index * Holograms.OFFSET_HEIGHT) + yOffset;
-        Teleport.tp(hologram,location.clone().add(0,offsetHeight,0));
+        teleport(location.clone().add(0,offsetHeight,0));
         this.hologram = hologram;
         setup();
+    }
+
+    /**
+     * NMS USE ONLY!
+     */
+    public Hologram(int index, float yOffset) {
+        offsetHeight = (index * Holograms.OFFSET_HEIGHT) + yOffset;
+        hologram = null;
     }
 
     private void setup() {
