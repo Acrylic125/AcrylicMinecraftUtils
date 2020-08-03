@@ -6,10 +6,10 @@ import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 
-@Getter
 public class Hologram {
-
+    @Getter
     private final float offsetHeight;
+    @Getter
     private final ArmorStand hologram;
 
     public Hologram(Location location, int index, String hologramText, float yOffset) {
