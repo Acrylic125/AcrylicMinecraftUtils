@@ -2,6 +2,7 @@ package com.acrylic.version_latest.Animations;
 
 import com.acrylic.version_latest.Messages.ChatUtils;
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 import java.util.LinkedList;
@@ -14,6 +15,7 @@ public class Holograms {
      */
     protected final static float OFFSET_HEIGHT = 0.25f;
 
+    @Setter
     private LinkedList<Hologram> holograms = new LinkedList<>();
     private Location location;
 
@@ -48,6 +50,10 @@ public class Holograms {
             this.holograms.add(new Hologram(location,i, entity,yOffset));
             i++;
         }
+    }
+
+    public Holograms(Location location, float yOffset) {
+        this.location = location;
     }
 
     /**
