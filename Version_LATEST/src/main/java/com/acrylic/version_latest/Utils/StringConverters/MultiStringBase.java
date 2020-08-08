@@ -1,4 +1,4 @@
-package com.acrylic.version_latest.Utils;
+package com.acrylic.version_latest.Utils.StringConverters;
 
 import lombok.Getter;
 import lombok.Setter;

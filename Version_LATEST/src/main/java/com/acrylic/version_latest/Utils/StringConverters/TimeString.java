@@ -1,9 +1,8 @@
-package com.acrylic.version_latest.Utils;
+package com.acrylic.version_latest.Utils.StringConverters;
 
 import com.acrylic.version_latest.Messages.ChatUtils;
-import lombok.Builder;
 
-public class TimeString extends MultiStringBase{
+public class TimeString extends MultiStringBase {
 
     private String week = "w";
     private String day = "d";

@@ -11,13 +11,11 @@ import org.bukkit.entity.LivingEntity;
  * Within the whole animation system, NMS entities ARE NOT FULLY SUPPORTED!
  * The alternative is to use the entity methods (i.e. .setHologram(ArmorStand... hologram)).
  */
+@Getter
 public abstract class AbstractAnimations {
 
     protected LivingEntity entity;
-
-    @Getter
     protected Holograms holograms;
-
     protected float armLength; //Arm length
     protected float height; //The height is NOT the entity's height but the Y OFFSET of the holograms based on the entity/
 
@@ -33,6 +31,10 @@ public abstract class AbstractAnimations {
 
     public void setHologram(String... hologram) {
         holograms = new Holograms(entity.getLocation(),height,hologram);
+    }
+
+    public void setHologram(Holograms holograms) {
+        this.holograms = holograms;
     }
 
     /**

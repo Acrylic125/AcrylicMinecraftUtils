@@ -1,27 +1,12 @@
 package com.acrylic.acrylicutils.Commands;
 
-import com.acrylic.acrylicutils.AcrylicUtils;
-import com.acrylic.acrylicutils.Commands.Test.EntityTest;
-import com.acrylic.version_1_8.ItemCreator;
-import com.acrylic.version_latest.GUI.GUIManager;
-import com.acrylic.version_latest.GUI.GUIMiddleSlot;
 import com.acrylic.version_latest.Probability.Probability;
-import com.acrylic.version_latest.Utils.LocationString;
-import com.acrylic.version_latest.Utils.TimeString;
-import com.mongodb.*;
-import dev.morphia.Datastore;
-import dev.morphia.Key;
-import dev.morphia.Morphia;
-import dev.morphia.dao.BasicDAO;
+import com.acrylic.version_latest.Utils.StringConverters.LocationString;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
-
-import java.util.ArrayList;
 
 public class TestCommand implements CommandExecutor{
 

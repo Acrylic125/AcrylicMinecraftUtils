@@ -1,9 +1,9 @@
-package com.acrylic.version_latest.Utils;
+package com.acrylic.version_latest.Utils.StringConverters;
 
 import com.acrylic.version_latest.Messages.ChatUtils;
 import org.bukkit.Location;
 
-public class LocationString extends MultiStringBase{
+public class LocationString extends MultiStringBase {
 
     /**
      *
