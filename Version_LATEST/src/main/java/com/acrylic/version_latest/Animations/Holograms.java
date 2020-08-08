@@ -52,6 +52,10 @@ public class Holograms {
         }
     }
 
+    public Holograms(Location location, float yOffset) {
+        this.location = location;
+    }
+
     public Holograms(Location location) {
         this.location = location;
     }
