@@ -3,6 +3,7 @@ package com.acrylic.version_latest.Items.Utils;
 import com.acrylic.version_latest.Messages.ChatUtils;
 import com.acrylic.version_latest.Utils.StringConverters.MultiStringBase;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -16,7 +17,8 @@ public class ItemUtils extends MultiStringBase {
 
     public ItemUtils(ItemStack item) {
         this.item = item;
-        isAir = item == null || item.getType().equals(Material.AIR) || !item.hasItemMeta();
+        isAir = item == null || item.getType().equals(Material.AIR);
+        itemMeta = (!isAir && item.hasItemMeta()) ? item.getItemMeta() : null;
     }
 
     public boolean isAir() {
@@ -25,7 +27,7 @@ public class ItemUtils extends MultiStringBase {
 
     public String getDisplayName() {
         if (!isAir) {
-           return (itemMeta.hasDisplayName()) ? "" : itemMeta.getDisplayName();
+           return (itemMeta != null && itemMeta.hasDisplayName()) ? itemMeta.getDisplayName() : getItemTypeName();
         } else {
             return "Air";
         }
@@ -33,7 +35,7 @@ public class ItemUtils extends MultiStringBase {
 
     public String getItemTypeName() {
         if (!isAir) {
-            return StringUtils.capitalize(item.getType().toString().toLowerCase());
+            return WordUtils.capitalize(item.getType().toString().replace("_"," ").toLowerCase());
         } else {
             return "Air";
         }
