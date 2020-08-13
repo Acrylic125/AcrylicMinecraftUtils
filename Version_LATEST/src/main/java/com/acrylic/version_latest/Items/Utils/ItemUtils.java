@@ -17,7 +17,7 @@ public class ItemUtils extends MultiStringBase {
 
     public ItemUtils(ItemStack item) {
         this.item = item;
-        isAir = item == null || item.getType().equals(Material.AIR);
+        isAir = isAir(item);
         itemMeta = (!isAir && item.hasItemMeta()) ? item.getItemMeta() : null;
     }
 
@@ -43,6 +43,10 @@ public class ItemUtils extends MultiStringBase {
 
     public String getItemDisplayName() {
         return ChatUtils.get(super.getColorNumber() + item.getAmount() + super.getColorText() + "x " + getDisplayName() + "&r");
+    }
+
+    public static boolean isAir(ItemStack item) {
+        return item == null || item.getType().equals(Material.AIR);
     }
 
 }

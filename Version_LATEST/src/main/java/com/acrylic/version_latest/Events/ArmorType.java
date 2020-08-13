@@ -1,5 +1,6 @@
 package com.acrylic.version_latest.Events;
 
+import com.acrylic.version_latest.Items.Utils.ItemUtils;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -27,7 +28,7 @@ public enum ArmorType{
 	 * @return The parsed ArmorType, or null if not found.
 	 */
 	public static ArmorType matchType(final ItemStack itemStack){
-		if(ArmorListener.isAirOrNull(itemStack)) return null;
+		if(ItemUtils.isAir(itemStack)) return null;
 		String type = itemStack.getType().name();
 		if(type.endsWith("_HELMET") || type.endsWith("_SKULL") || type.endsWith("PLAYER_HEAD")) return HELMET;
 		else if(type.endsWith("_CHESTPLATE") || type.endsWith("ELYTRA")) return CHESTPLATE;
