@@ -1,0 +1,4 @@
+name: Databases
+version: ${project.version}
+main: com.acrylic.databases.Databases
+api-version: 1.16
