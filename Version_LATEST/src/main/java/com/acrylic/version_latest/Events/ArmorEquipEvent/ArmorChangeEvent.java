@@ -8,27 +8,13 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.PluginManager;
 
 /**
  * This is MY IMPLEMENTATION of armor equip event. The old system by Armurh was
  * very poorly designed therefore it was deleted.
  */
 public class ArmorChangeEvent extends Event implements Cancellable {
-
-    public static ArmorChangeEvent call(LivingEntity entity, ItemStack newItem, ItemStack oldItem, ArmorEquipType armorEquipType, boolean hotswap) {
-        ArmorChangeEvent event = new ArmorChangeEvent(entity,newItem,oldItem,armorEquipType,hotswap);
-        Bukkit.getPluginManager().callEvent(event);
-        return event;
-    }
-
-    public static void refresh(LivingEntity entity, ArmorEquipType armorEquipType) {
-        EntityEquipment entityEquipment = entity.getEquipment();
-        if (entityEquipment == null) return;
-        Bukkit.getPluginManager().callEvent(new ArmorChangeEvent(entity,entityEquipment.getHelmet(),null,armorEquipType,false));
-        Bukkit.getPluginManager().callEvent(new ArmorChangeEvent(entity,entityEquipment.getChestplate(),null,armorEquipType,false));
-        Bukkit.getPluginManager().callEvent(new ArmorChangeEvent(entity,entityEquipment.getLeggings(),null,armorEquipType,false));
-        Bukkit.getPluginManager().callEvent(new ArmorChangeEvent(entity,entityEquipment.getBoots(),null,armorEquipType,false));
-    }
 
     @Getter
     private final ArmorEquipType equipType;
@@ -41,7 +27,7 @@ public class ArmorChangeEvent extends Event implements Cancellable {
     @Getter
     private final boolean hotswap;
 
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
+    public static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean isCancelled;
 
     /**
@@ -79,6 +65,22 @@ public class ArmorChangeEvent extends Event implements Cancellable {
 
     public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
+    }
+
+    public static ArmorChangeEvent call(LivingEntity entity, ItemStack newItem, ItemStack oldItem, ArmorEquipType armorEquipType, boolean hotswap) {
+        ArmorChangeEvent event = new ArmorChangeEvent(entity,newItem,oldItem,armorEquipType,hotswap);
+        Bukkit.getPluginManager().callEvent(event);
+        return event;
+    }
+
+    public static void refresh(LivingEntity entity, ArmorEquipType armorEquipType) {
+        EntityEquipment entityEquipment = entity.getEquipment();
+        PluginManager pluginManager = Bukkit.getPluginManager();
+        if (entityEquipment == null) return;
+        pluginManager.callEvent(new ArmorChangeEvent(entity,entityEquipment.getHelmet(),null,armorEquipType,false));
+        pluginManager.callEvent(new ArmorChangeEvent(entity,entityEquipment.getChestplate(),null,armorEquipType,false));
+        pluginManager.callEvent(new ArmorChangeEvent(entity,entityEquipment.getLeggings(),null,armorEquipType,false));
+        pluginManager.callEvent(new ArmorChangeEvent(entity,entityEquipment.getBoots(),null,armorEquipType,false));
     }
 
 }
