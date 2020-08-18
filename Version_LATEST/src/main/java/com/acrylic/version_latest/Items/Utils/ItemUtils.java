@@ -1,8 +1,8 @@
 package com.acrylic.version_latest.Items.Utils;
 
 import com.acrylic.version_latest.Messages.ChatUtils;
+import com.acrylic.version_latest.Plugin;
 import com.acrylic.version_latest.Utils.StringConverters.MultiStringBase;
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -42,7 +42,7 @@ public class ItemUtils extends MultiStringBase {
     }
 
     public String getItemDisplayName() {
-        return ChatUtils.get(super.getColorNumber() + item.getAmount() + super.getColorText() + "x " + getDisplayName() + "&r");
+        return ChatUtils.get(super.getColorNumber() + item.getAmount() + super.getColorText() + "x&r&f " + getDisplayName() + "&r");
     }
 
     public static boolean isAir(ItemStack item) {
