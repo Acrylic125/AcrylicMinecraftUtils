@@ -16,6 +16,12 @@ import java.util.ArrayList;
 @Getter
 public class ItemDropProtection {
 
+    public enum State {
+        NOT_A_PROTECTED_ITEM,
+        PLAYER_DOES_NOT_OWN_ITEM,
+        PLAYER_OWNS_ITEM
+    }
+
     private final ArrayList<String> owners = new ArrayList<>();
     private final long protectedDuration;
 
@@ -41,10 +47,10 @@ public class ItemDropProtection {
         return this;
     }
 
-    public static boolean isOwnedBy(Item item, Player player) {
+    public static State isOwnedBy(Item item, Player player) {
         ItemDropProtection itemDropProtection = ItemDropProtectionManager.get(item);
-        if (itemDropProtection == null) return true;
-        return itemDropProtection.getProtectedDuration() < System.currentTimeMillis() || itemDropProtection.getOwners().contains(player.getName());
+        if (itemDropProtection == null || itemDropProtection.getProtectedDuration() < System.currentTimeMillis()) return State.NOT_A_PROTECTED_ITEM;
+        return (itemDropProtection.getOwners().contains(player.getName())) ? State.PLAYER_OWNS_ITEM : State.PLAYER_DOES_NOT_OWN_ITEM;
     }
 
 

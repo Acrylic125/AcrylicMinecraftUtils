@@ -10,8 +10,6 @@ public class TimeString extends MultiStringBase {
     private String min = "m";
     private String sec = "s";
 
-    public TimeString() { }
-
     public TimeString setWeek(String week) {
         this.week = week;
         return this;
