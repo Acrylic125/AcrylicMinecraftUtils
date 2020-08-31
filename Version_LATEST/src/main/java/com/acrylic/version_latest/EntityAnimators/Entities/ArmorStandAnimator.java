@@ -3,6 +3,7 @@ package com.acrylic.version_latest.EntityAnimators.Entities;
 import com.acrylic.version_latest.EntityAnimators.EntityAnimator;
 import com.acrylic.version_latest.EntityAnimators.Equipment.AbstractEntityEquipment;
 import com.acrylic.version_latest.Utils.Teleport;
+import de.tr7zw.nbtapi.NBTEntity;
 import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;

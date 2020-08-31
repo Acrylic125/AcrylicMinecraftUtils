@@ -6,19 +6,8 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * This is a GUI class that makes items centered.
- */
-public class GUIMiddleSlot {
+public class GUIMiddleSlot extends AbstractGUI {
 
-    private final ArrayList<ItemStack> items = new ArrayList<>();
-    private final Inventory inventory;
-    private final int offsetSlot;
-    private final int chunkSize;
-    private final int initialRow;
-    private final int maxColumns;
-
-    /**
      /**
      * This is not for normal chests (9 row GUIs)
      * @param inventory The inventory you want to use to center.
@@ -26,11 +15,8 @@ public class GUIMiddleSlot {
      * @param chunkSize The amount of items per row. Please refrain from using even numbers!
     */
     public GUIMiddleSlot(Inventory inventory, int initialRow, int chunkSize) {
-        this.initialRow = initialRow;
-        this.chunkSize = chunkSize;
-        this.inventory = inventory;
-        this.maxColumns = 9;
-        this.offsetSlot = maxColumns - chunkSize + 1;
+        super(initialRow,9,chunkSize);
+        super.inventory = inventory;
     }
 
     /**
@@ -42,13 +28,11 @@ public class GUIMiddleSlot {
      *                   have. (i.e. Chests have 9)
      */
     public GUIMiddleSlot(Inventory inventory, int initialRow, int chunkSize, int maxColumns) {
-        this.initialRow = initialRow;
-        this.chunkSize = chunkSize;
-        this.inventory = inventory;
-        this.maxColumns = maxColumns;
-        this.offsetSlot = maxColumns - chunkSize + 1;
+        super(initialRow,maxColumns,chunkSize);
+        super.inventory = inventory;
     }
 
+    @Override
     public GUIMiddleSlot add(ItemStack item) {
         items.add(item);
         return this;
@@ -62,6 +46,7 @@ public class GUIMiddleSlot {
      *
      * You can ignore the explanation but this method is to construct the GUI.
      */
+    @Override
     public void construct() {
         final int size = items.size();
         final int initialSlot = (int) (maxColumns * (initialRow - 1) + Math.floor((float) offsetSlot / 2) - 1);

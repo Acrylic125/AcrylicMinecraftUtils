@@ -38,6 +38,7 @@ public class ArmorEquipListeners implements Listener {
 
     private static void setArmorItem(Player player, NormalItemType normalItemType, ItemStack item, ItemStack previousItem) {
         EntityEquipment equipment = player.getEquipment();
+        if (equipment == null) return;
         if (normalItemType.equals(NormalItemType.HELMET)) equipment.setHelmet(item);
         else if (normalItemType.equals(NormalItemType.CHESTPLATE)) equipment.setChestplate(item);
         else if (normalItemType.equals(NormalItemType.LEGGINGS)) equipment.setLeggings(item);
@@ -47,6 +48,7 @@ public class ArmorEquipListeners implements Listener {
 
     private static ItemStack getArmorItem(Player player, NormalItemType normalItemType) throws ItemIsNotAnArmor {
         EntityEquipment equipment = player.getEquipment();
+        if (equipment == null) return null;
         if (normalItemType.equals(NormalItemType.HELMET)) return equipment.getHelmet();
         else if (normalItemType.equals(NormalItemType.CHESTPLATE)) return equipment.getChestplate();
         else if (normalItemType.equals(NormalItemType.LEGGINGS)) return equipment.getLeggings();
@@ -63,7 +65,9 @@ public class ArmorEquipListeners implements Listener {
     public void listen(PlayerInteractEvent e) {
         Action action = e.getAction();
         if (action.equals(Action.RIGHT_CLICK_AIR) || action.equals(Action.RIGHT_CLICK_BLOCK)) {
-            e.setCancelled(interact(e.getPlayer(),e.getItem()).isCancelled());
+            ArmorChangeEvent event = interact(e.getPlayer(),e.getItem());
+            if (event == null) return;
+            e.setCancelled(event.isCancelled());
         }
     }
 
