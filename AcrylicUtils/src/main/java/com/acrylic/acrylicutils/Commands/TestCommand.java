@@ -3,7 +3,9 @@ package com.acrylic.acrylicutils.Commands;
 import com.acrylic.version_latest.Utils.Weight.WeightComparator;
 import com.acrylic.version_latest.Utils.Weight.WeightProducer;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,7 +20,6 @@ public class TestCommand implements CommandExecutor{
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         Player p = (Player) sender;
-
 
         /**GUIManager manager = new GUIManager("Hello",6);
         manager.show(p);

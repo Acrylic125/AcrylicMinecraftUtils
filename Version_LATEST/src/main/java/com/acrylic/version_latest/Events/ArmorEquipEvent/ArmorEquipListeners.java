@@ -57,7 +57,7 @@ public class ArmorEquipListeners implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void listen(PlayerLoginEvent e) {
+    public void listen(PlayerJoinEvent e) {
         ArmorChangeEvent.refresh(e.getPlayer(),ArmorEquipType.LOGIN);
     }
 
