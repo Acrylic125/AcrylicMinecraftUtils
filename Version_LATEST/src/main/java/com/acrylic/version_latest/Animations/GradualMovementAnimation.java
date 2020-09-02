@@ -66,4 +66,12 @@ public class GradualMovementAnimation extends AbstractAnimations {
     public Location getLocation() {
         return (animation == null) ? entity.getLocation() : animation.getLocation();
     }
+
+    @Override
+    public void delete() {
+        entity.remove();
+        if (holograms != null) holograms.delete();
+        if (animation != null) animation.delete();
+    }
+
 }
