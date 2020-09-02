@@ -62,6 +62,7 @@ public class HandRotatorAnimation extends AbstractAnimations {
     @Override
     public void teleport(final Location location) {
         this.location = location.clone();
+        if (isUsingHolograms()) holograms.teleport(location);
         index++;
         Circle circle = new Circle(armLength, location, 32);
         Location loc = circle.getCirclePoint(index);

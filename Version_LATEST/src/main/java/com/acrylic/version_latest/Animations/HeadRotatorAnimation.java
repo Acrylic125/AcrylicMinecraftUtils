@@ -51,6 +51,7 @@ public class HeadRotatorAnimation extends AbstractAnimations {
     public void teleport(Location location) {
         float yaw = (rotation * index);
         location.setYaw(yaw);
+        if (isUsingHolograms()) holograms.teleport(location);
         Teleport.tp(entity,location);
         index++;
     }

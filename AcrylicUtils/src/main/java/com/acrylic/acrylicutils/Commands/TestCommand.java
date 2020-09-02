@@ -47,6 +47,25 @@ public class TestCommand implements CommandExecutor{
 
         Player p = (Player) sender;
 
+        /**ArmorStandAnimator armorStandAnimator = new ArmorStandAnimator(p.getLocation());
+        armorStandAnimator.setEntityEquipment(new EntityEquipment(armorStandAnimator.getEntity()).setItemInMainHand(new ItemStack(Material.DIAMOND_AXE)));
+        HandRotatorAnimation handRotatorAnimation = new HandRotatorAnimation(armorStandAnimator);
+        GradualMovementAnimation gradualMovementAnimation = new GradualMovementAnimation(handRotatorAnimation,Integer.parseInt(args[0]));
+        handRotatorAnimation.setHologram("Test");
+        ItemDangle itemDangle = new ItemDangle(p);
+        itemDangle.addAnimator(gradualMovementAnimation);
+
+        new BukkitRunnable() {
+            int i = 0;
+
+            @Override
+            public void run() {
+                if (i >= 100) cancel();
+                i++;
+                itemDangle.update();
+            }
+        }.runTaskTimer(AcrylicUtils.getAcrylicUtils(),1,1);
+
         /**GUIManager manager = new GUIManager("&e&lFuck you",6);
         manager.show(p);
         guiPageBuilder.

@@ -54,10 +54,11 @@ public class GradualMovementAnimation extends AbstractAnimations {
         SimpleVector current = new SimpleVector(getLocation().toVector());
         SimpleVector diff = new SimpleVector(location.toVector())
                 .subtract(current)
-                .divide((float) gradualCount)
+                .multiply((float) (index * 0.5) / gradualCount)
                 ;
         current.add(diff);
-        tp(current.getLocation(location.getWorld()));
+        Location loc = current.getLocation(location.getWorld());
+        tp(loc);
         index++;
     }
 

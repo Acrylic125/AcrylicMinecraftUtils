@@ -57,7 +57,6 @@ public class ItemDangle {
         animators.forEach(abstractAnimations -> {
             Location point = circle.getCirclePoint(i.get());
             abstractAnimations.teleport(point.clone());
-            if (abstractAnimations.isUsingHolograms()) abstractAnimations.holograms.teleport(point);
             i.addAndGet(1);
         });
     }
