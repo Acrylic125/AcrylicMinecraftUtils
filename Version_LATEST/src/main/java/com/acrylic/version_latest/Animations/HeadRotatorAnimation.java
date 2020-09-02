@@ -15,8 +15,8 @@ public class HeadRotatorAnimation extends AbstractAnimations {
     private float rotation = DEFAULT_ROTATION;
     private int index = 0;
 
-    public HeadRotatorAnimation(EntityAnimator entityManager) {
-        super(entityManager);
+    public HeadRotatorAnimation(EntityAnimator entityAnimator) {
+        super(entityAnimator);
     }
 
     public HeadRotatorAnimation(LivingEntity entity) {

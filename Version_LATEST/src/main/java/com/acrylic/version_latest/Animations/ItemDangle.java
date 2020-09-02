@@ -24,6 +24,8 @@ public class ItemDangle {
     @Setter
     private int fullView = DEFAULT_FULL_VIEW_TOTAL;
 
+
+
     public ItemDangle(Player p) {
         player = p;
         animators = new ArrayList<>();
@@ -55,9 +57,7 @@ public class ItemDangle {
         animators.forEach(abstractAnimations -> {
             Location point = circle.getCirclePoint(i.get());
             abstractAnimations.teleport(point.clone());
-            if (abstractAnimations.isUsingHolograms()) {
-                abstractAnimations.holograms.teleport(point);
-            }
+            if (abstractAnimations.isUsingHolograms()) abstractAnimations.holograms.teleport(point);
             i.addAndGet(1);
         });
     }

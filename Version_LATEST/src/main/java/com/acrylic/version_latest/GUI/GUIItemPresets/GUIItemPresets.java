@@ -2,6 +2,7 @@ package com.acrylic.version_latest.GUI.GUIItemPresets;
 
 import lombok.Getter;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,11 @@ public class GUIItemPresets {
 
     public GUIItemPresets setItem(GUIItemPreset guiItemPreset) {
         itemPresets.add(guiItemPreset);
+        return this;
+    }
+
+    public GUIItemPresets setItem(int slot, ItemStack item) {
+        itemPresets.add(new GUIItemPreset(slot, item));
         return this;
     }
 

@@ -1,6 +1,7 @@
 package com.acrylic.version_latest.GUI;
 
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -31,7 +32,7 @@ public class GUIPageBuilder extends AbstractGUI {
         this.maxRows = maxRows;
     }
 
-    private int getTotalPages() {
+    public int getTotalPages() {
         return (int) Math.floor((float) items.size() / getMaxItemsPerPage()) + 1;
     }
 

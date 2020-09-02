@@ -7,16 +7,11 @@ import org.bukkit.inventory.ItemStack;
 public class GUIItemPreset {
 
     private final int slot;
-    protected final ItemStack item;
+    protected ItemStack item;
 
     public GUIItemPreset(int slot, ItemStack item) {
         this.slot = slot;
         this.item = item;
-        constructNBT();
-    }
-
-    public GUIItemPreset constructNBT() {
-        return this;
     }
 
 }

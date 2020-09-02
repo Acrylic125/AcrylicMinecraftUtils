@@ -49,8 +49,8 @@ public class HandRotatorAnimation extends AbstractAnimations {
         this.location = entity.getLocation();
     }
 
-    public HandRotatorAnimation(EntityAnimator entityManager) {
-        super(entityManager);
+    public HandRotatorAnimation(EntityAnimator entityAnimator) {
+        super(entityAnimator);
         this.location = entity.getLocation();
         if (entity.getType().equals(EntityType.ARMOR_STAND)) {
             ArmorStand as = (ArmorStand) entity;

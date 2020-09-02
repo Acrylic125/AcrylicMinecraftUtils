@@ -19,8 +19,8 @@ public abstract class AbstractAnimations {
     protected float armLength; //Arm length
     protected float height; //The height is NOT the entity's height but the Y OFFSET of the holograms based on the entity/
 
-    public AbstractAnimations(EntityAnimator entityManager) {
-        entity = entityManager.getEntity();
+    public AbstractAnimations(EntityAnimator entityAnimator) {
+        entity = entityAnimator.getEntity();
         setup();
     }
 
