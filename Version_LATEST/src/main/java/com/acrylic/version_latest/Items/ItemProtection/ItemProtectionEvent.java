@@ -25,6 +25,7 @@ public class ItemProtectionEvent implements Listener {
             Bukkit.getPluginManager().callEvent(event);
             e.setCancelled(event.isCancelled());
         } else {
+            Bukkit.broadcastMessage("G");
             e.setCancelled(state.equals(ItemDropProtection.State.PLAYER_DOES_NOT_OWN_ITEM));
         }
     }

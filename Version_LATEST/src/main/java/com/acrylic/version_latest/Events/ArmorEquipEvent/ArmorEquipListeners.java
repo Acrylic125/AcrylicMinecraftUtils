@@ -4,6 +4,7 @@ import com.acrylic.version_latest.Events.Exceptions.ItemIsNotAnArmor;
 import com.acrylic.version_latest.Items.Utils.ItemUtils;
 import com.acrylic.version_latest.Items.Utils.NormalItemType;
 import com.acrylic.version_latest.Items.Utils.NormalItemTypeManager;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -130,7 +131,7 @@ public class ArmorEquipListeners implements Listener {
             default:
                 return;
         }
-        e.setCancelled(ArmorChangeEvent.call(e.getWhoClicked(),newItem,oldItem,ArmorEquipType.INVENTORY,false).isCancelled());
+        //e.setCancelled(ArmorChangeEvent.call(e.getWhoClicked(),newItem,oldItem,ArmorEquipType.INVENTORY,false).isCancelled());
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

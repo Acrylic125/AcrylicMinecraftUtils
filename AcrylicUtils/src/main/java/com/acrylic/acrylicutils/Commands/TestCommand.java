@@ -10,6 +10,7 @@ import com.acrylic.version_latest.GUI.GUIItemPresets.GUIItemPresets;
 import com.acrylic.version_latest.GUI.GUIItemPresets.GUIPageSelectorItem;
 import com.acrylic.version_latest.GUI.GUIManager;
 import com.acrylic.version_latest.GUI.GUIPageBuilder;
+import com.acrylic.version_latest.Items.ItemProtection.ItemDropProtection;
 import com.acrylic.version_latest.Utils.Weight.WeightComparator;
 import com.acrylic.version_latest.Utils.Weight.WeightProducer;
 import org.bukkit.Bukkit;
@@ -46,6 +47,7 @@ public class TestCommand implements CommandExecutor{
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         Player p = (Player) sender;
+        ItemDropProtection dropProtection = new ItemDropProtection(p.getLocation(),new ItemStack(Material.EMERALD)).addPlayer(p);
 
         /**ArmorStandAnimator armorStandAnimator = new ArmorStandAnimator(p.getLocation());
         armorStandAnimator.setEntityEquipment(new EntityEquipment(armorStandAnimator.getEntity()).setItemInMainHand(new ItemStack(Material.DIAMOND_AXE)));
