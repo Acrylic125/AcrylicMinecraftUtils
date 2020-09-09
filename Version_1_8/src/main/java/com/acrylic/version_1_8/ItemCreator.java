@@ -19,7 +19,6 @@ public class ItemCreator implements ItemInterface {
     public ItemCreator(ItemCreator itemCreator) {
         item = itemCreator.getItem();
         meta = item.getItemMeta();
-
     }
     public ItemCreator(Material material) {
         this(material,1);
@@ -100,5 +99,10 @@ public class ItemCreator implements ItemInterface {
     public ItemInterface setQuantity(int quantity) {
         item.setAmount(quantity);
         return this;
+    }
+
+    @Override
+    public ItemMeta getIteMeta() {
+        return meta;
     }
 }

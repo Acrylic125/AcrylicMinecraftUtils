@@ -25,6 +25,7 @@ public class ArmorEquipListeners implements Listener {
     private static ArmorChangeEvent interact(Player player, ItemStack item){
         if (ItemUtils.isAir(item)) return null;
         NormalItemType normalItemType = NormalItemTypeManager.get(item.getType());
+        if (!normalItemType.isArmor()) return null;
         ItemStack previousItem;
         ItemStack newItem;
         try {
@@ -74,11 +75,13 @@ public class ArmorEquipListeners implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void listen(PlayerInteractEntityEvent e) {
-        e.setCancelled(interact(e.getPlayer(),e.getPlayer().getItemInHand()).isCancelled());
+        ArmorChangeEvent event = interact(e.getPlayer(),e.getPlayer().getItemInHand());
+        if (event == null) return;
+        e.setCancelled(event.isCancelled());
     }
 
     @EventHandler(priority =  EventPriority.HIGHEST, ignoreCancelled = true)
-    public final void inventoryClick(InventoryClickEvent e){
+    public void inventoryClick(InventoryClickEvent e){
         InventoryAction action = e.getAction();
         if(action == InventoryAction.NOTHING) return;// Why does this get called if nothing happens??
         ClickType clickType = e.getClick();
@@ -131,7 +134,7 @@ public class ArmorEquipListeners implements Listener {
             default:
                 return;
         }
-        //e.setCancelled(ArmorChangeEvent.call(e.getWhoClicked(),newItem,oldItem,ArmorEquipType.INVENTORY,false).isCancelled());
+        e.setCancelled(ArmorChangeEvent.call(e.getWhoClicked(),newItem,oldItem,ArmorEquipType.INVENTORY,false).isCancelled());
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

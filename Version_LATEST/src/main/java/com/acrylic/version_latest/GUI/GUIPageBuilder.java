@@ -1,7 +1,10 @@
 package com.acrylic.version_latest.GUI;
 
+import com.acrylic.version_latest.GUI.GUIItemPresets.GUIPageSelectorItem;
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -30,6 +33,12 @@ public class GUIPageBuilder extends AbstractGUI {
     public GUIPageBuilder(int initialRow, int maxColumns, int chunkSize, int maxRows) {
         super(initialRow, maxColumns, chunkSize);
         this.maxRows = maxRows;
+    }
+
+    public GUIPageBuilder openNew(Player player, Inventory inventory) {
+        player.openInventory(inventory);
+        setPage(1).setInventory(inventory);
+        return this;
     }
 
     public int getTotalPages() {
@@ -78,6 +87,5 @@ public class GUIPageBuilder extends AbstractGUI {
             guiMiddleSlot.construct();
         }
     }
-
 
 }

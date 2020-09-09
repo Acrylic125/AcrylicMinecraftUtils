@@ -100,4 +100,10 @@ public class ItemCreator implements ItemInterface{
         item.setAmount(quantity);
         return this;
     }
+
+    @Override
+    public ItemMeta getIteMeta() {
+        return meta;
+    }
+
 }

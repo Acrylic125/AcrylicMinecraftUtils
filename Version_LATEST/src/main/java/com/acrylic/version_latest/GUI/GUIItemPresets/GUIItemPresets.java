@@ -1,5 +1,7 @@
 package com.acrylic.version_latest.GUI.GUIItemPresets;
 
+import com.acrylic.version_latest.GUI.AbstractGUI;
+import com.acrylic.version_latest.GUI.GUIPageBuilder;
 import lombok.Getter;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -26,9 +28,15 @@ public class GUIItemPresets {
         return this;
     }
 
-    public void construct(Inventory inventory) {
+    public void construct(AbstractGUI abstractGUI) {
+        final Inventory inventory = abstractGUI.getInventory();
+        final GUIPageBuilder guiPageBuilder = (abstractGUI instanceof GUIPageBuilder) ? ((GUIPageBuilder) abstractGUI) : null;
         itemPresets.forEach(guiItemPreset -> {
-            inventory.setItem(guiItemPreset.getSlot(),guiItemPreset.getItem());
+            if (guiPageBuilder != null && guiItemPreset instanceof GUIPageDisplayItem) {
+                ItemStack item = ((GUIPageDisplayItem) guiItemPreset).getItem(guiPageBuilder.getPage(),guiPageBuilder);
+                if (item != null) inventory.setItem(guiItemPreset.getSlot(), item);
+            }
+            else inventory.setItem(guiItemPreset.getSlot(),guiItemPreset.getItem());
         });
     }
 

@@ -5,6 +5,8 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.function.Consumer;
+
 public interface ItemInterface {
 
     /**
@@ -39,7 +41,6 @@ public interface ItemInterface {
 
     ItemInterface setSkullOwner(String offlinePlayerName);
 
-
     /**
      *
      * @param damage
@@ -56,5 +57,17 @@ public interface ItemInterface {
     ItemInterface getInstance();
 
     ItemInterface setQuantity(int quantity);
+
+    ItemMeta getIteMeta();
+
+    default ItemInterface modifyItemMeta(Consumer<ItemMeta> action) {
+        action.accept(getIteMeta());
+        return this;
+    }
+
+    default ItemInterface modifyItemStack(Consumer<ItemStack> action) {
+        action.accept(getItem());
+        return this;
+    }
 
 }

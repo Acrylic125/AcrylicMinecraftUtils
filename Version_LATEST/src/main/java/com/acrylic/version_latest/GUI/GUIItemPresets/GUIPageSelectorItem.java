@@ -1,12 +1,9 @@
 package com.acrylic.version_latest.GUI.GUIItemPresets;
 
+import com.acrylic.version_latest.GUI.GUIExceptions.NotAValidPageSelectorException;
 import com.acrylic.version_latest.GUI.GUIPageBuilder;
 import de.tr7zw.nbtapi.NBTItem;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Please avoid overusing this system!
@@ -15,41 +12,34 @@ import java.util.List;
  * {PAGE}         : The current page.
  * {TOTAL_PAGE}   : The total amount of pages.
  */
-public class GUIPageSelectorItem extends GUIItemPreset {
+public class GUIPageSelectorItem extends GUIPageDisplayItem {
+
+    public enum PageType {
+        NEXT, PREVIOUS
+    }
 
     private final static String PAGE_IDENTIFIER_TAG = "page";
+    private final PageType pageType;
 
-    private int page = 1;
-
-    public GUIPageSelectorItem(int slot, ItemStack item) {
+    public GUIPageSelectorItem(int slot, ItemStack item, PageType pageType) {
         super(slot,item);
+        this.pageType = pageType;
     }
 
     public ItemStack getItem(int page, GUIPageBuilder guiPageBuilder) {
-        ItemStack item = super.getItem().clone();
-        ItemMeta meta = item.getItemMeta();
-        if (meta == null) return super.getItem();
-
-        List<String> lore = meta.getLore();
-        if (lore != null) {
-            LinkedList<String> list = new LinkedList<>();
-            lore.forEach(line -> {
-                list.add(convert(line,page,guiPageBuilder));
-            });
-            meta.setLore(list);
-        }
-        meta.setDisplayName(convert(meta.getDisplayName(),page,guiPageBuilder));
-
+        page = (pageType.equals(PageType.PREVIOUS)) ? page - 1 : (pageType.equals(PageType.NEXT)) ? page + 1 : page;
+        ItemStack item = super.getItem(page, guiPageBuilder);
+        if (item == null) return null;
         NBTItem nbtItem = new NBTItem(item);
         nbtItem.setInteger(PAGE_IDENTIFIER_TAG,page);
-        item = nbtItem.getItem();
-        return item;
+        return nbtItem.getItem();
     }
 
-    private String convert(String line, int page, GUIPageBuilder guiPageBuilder) {
-        return line
-                .replace("{CURRENT_PAGE}",page + "")
-                .replace("{TOTAL_PAGE}",(guiPageBuilder.getTotalPages()) + "");
+    public static int getClickedPage(ItemStack item) throws NotAValidPageSelectorException {
+        NBTItem nbtItem = new NBTItem(item);
+        int page = nbtItem.getInteger(PAGE_IDENTIFIER_TAG);
+        if (page <= 0) throw new NotAValidPageSelectorException();
+        return page;
     }
 
 }
