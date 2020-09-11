@@ -24,15 +24,27 @@ public class GUIPageBuilder extends AbstractGUI {
 
     private boolean usingMiddleSlotSystem = false;
     private int page = 1;
+    private int maxItemsPerPage = 1;
 
     public GUIPageBuilder(int initialRow, int chunkSize, int maxRows) {
         super(initialRow, 9, chunkSize);
         this.maxRows = maxRows;
+        setMaxItemsPerPage();
     }
 
     public GUIPageBuilder(int initialRow, int maxColumns, int chunkSize, int maxRows) {
         super(initialRow, maxColumns, chunkSize);
         this.maxRows = maxRows;
+    }
+
+    public GUIPageBuilder setMaxItemsPerPage(int maxItemsPerPage) {
+        this.maxItemsPerPage = maxItemsPerPage;
+        return this;
+    }
+
+    public GUIPageBuilder setMaxItemsPerPage() {
+        this.maxItemsPerPage = (maxRows - initialRow + 1) * chunkSize;
+        return this;
     }
 
     public GUIPageBuilder openNew(Player player, Inventory inventory) {
@@ -42,11 +54,14 @@ public class GUIPageBuilder extends AbstractGUI {
     }
 
     public int getTotalPages() {
-        return (int) Math.floor((float) items.size() / getMaxItemsPerPage()) + 1;
+        int size = items.size();
+        if (size == 0) return 1;
+        int sizePerPage = getMaxItemsPerPage();
+        return (int) Math.floor((float) items.size() / getMaxItemsPerPage()) + ((size % sizePerPage == 0) ? 0 : 1);
     }
 
     private int getMaxItemsPerPage() {
-        return (maxRows - initialRow + 1) * chunkSize;
+        return maxItemsPerPage;
     }
 
     public GUIPageBuilder setPage(int page) {
@@ -72,7 +87,7 @@ public class GUIPageBuilder extends AbstractGUI {
         int index = (page - 1) * max + 1;
         int lastIndex = page * max;
         lastIndex = Math.min(lastIndex, items.size());
-        if (!usingMiddleSlotSystem || page < getTotalPages()) {
+        if (!usingMiddleSlotSystem) {
             int slot = (int) (((initialRow - 1) * 9) + Math.floor((float) offsetSlot / 2));
             for (int i = index; i <= lastIndex; i++) {
                 inventory.setItem(slot,items.get(i - 1));

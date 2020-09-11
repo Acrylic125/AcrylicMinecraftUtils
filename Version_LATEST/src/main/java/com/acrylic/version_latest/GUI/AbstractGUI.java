@@ -45,6 +45,11 @@ public abstract class AbstractGUI {
         return this;
     }
 
+    public AbstractGUI clear() {
+        items.clear();
+        return this;
+    }
+
     /**
      * Construct with gui item presets.
      */
