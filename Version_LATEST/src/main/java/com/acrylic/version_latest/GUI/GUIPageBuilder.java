@@ -90,7 +90,12 @@ public class GUIPageBuilder extends AbstractGUI {
         if (!usingMiddleSlotSystem) {
             int slot = (int) (((initialRow - 1) * 9) + Math.floor((float) offsetSlot / 2));
             for (int i = index; i <= lastIndex; i++) {
-                inventory.setItem(slot,items.get(i - 1));
+                ItemStack item = items.get(i - 1);
+                if (action != null) {
+                    item = item.clone();
+                    action.accept(item);
+                }
+                inventory.setItem(slot,item);
                 if (i % chunkSize == 0) slot += offsetSlot;
                 else slot++;
             }

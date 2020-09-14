@@ -54,9 +54,13 @@ public abstract class AbstractGUI {
      * Construct with gui item presets.
      */
     public void constructAll() {
+        construct(null);
+    }
+
+    public void constructAll(Consumer<ItemStack> action) {
         inventory.clear();
         if (guiItemPresets != null) guiItemPresets.construct(this);
-        construct();
+        construct(action);
     }
 
     public boolean isThisGUI(String inventoryName) throws NoIdentifierNameDefined {
