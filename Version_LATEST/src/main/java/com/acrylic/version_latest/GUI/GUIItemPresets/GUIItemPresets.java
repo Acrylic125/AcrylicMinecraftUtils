@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public class GUIItemPresets {
+public final class GUIItemPresets {
 
     @Getter
     private final ArrayList<GUIItemPreset> itemPresets = new ArrayList<>();
@@ -37,6 +37,12 @@ public class GUIItemPresets {
                 if (item != null) inventory.setItem(guiItemPreset.getSlot(), item);
             }
             else inventory.setItem(guiItemPreset.getSlot(),guiItemPreset.getItem());
+        });
+    }
+
+    public void construct(Inventory inventory) {
+        itemPresets.forEach(guiItemPreset -> {
+            inventory.setItem(guiItemPreset.getSlot(),guiItemPreset.getItem());
         });
     }
 

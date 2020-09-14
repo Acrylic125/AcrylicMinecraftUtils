@@ -3,11 +3,11 @@ package com.acrylic.version_latest.GUI;
 import com.acrylic.version_latest.GUI.GUIExceptions.NoIdentifierNameDefined;
 import com.acrylic.version_latest.GUI.GUIItemPresets.GUIItemPresets;
 import lombok.Getter;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 @Getter
 public abstract class AbstractGUI {
@@ -55,8 +55,8 @@ public abstract class AbstractGUI {
      */
     public void constructAll() {
         inventory.clear();
-        construct();
         if (guiItemPresets != null) guiItemPresets.construct(this);
+        construct();
     }
 
     public boolean isThisGUI(String inventoryName) throws NoIdentifierNameDefined {
@@ -70,5 +70,6 @@ public abstract class AbstractGUI {
      * Construct without gui item presets.
      */
     public abstract void construct();
+    
 
 }
