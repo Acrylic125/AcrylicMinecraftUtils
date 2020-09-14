@@ -5,6 +5,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.function.Consumer;
+
 /**
  * The first page of the GUI is page 1.
  *
@@ -58,7 +60,7 @@ public class GUIPageBuilder extends AbstractGUI {
         return (int) Math.floor((float) items.size() / getMaxItemsPerPage()) + ((size % sizePerPage == 0) ? 0 : 1);
     }
 
-    private int getMaxItemsPerPage() {
+    public int getMaxItemsPerPage() {
         return maxItemsPerPage;
     }
 
@@ -79,7 +81,7 @@ public class GUIPageBuilder extends AbstractGUI {
     }
 
     @Override
-    public void construct() {
+    public void construct(Consumer<ItemStack> action) {
         if (inventory == null) return;
         int max = getMaxItemsPerPage();
         int index = (page - 1) * max + 1;
@@ -95,10 +97,16 @@ public class GUIPageBuilder extends AbstractGUI {
         } else {
             GUIMiddleSlot guiMiddleSlot = new GUIMiddleSlot(inventory,initialRow,chunkSize,maxColumns);
             for (int i = index; i <= lastIndex; i++) {
-                guiMiddleSlot.add(items.get(i - 1));
+                ItemStack item = items.get(i - 1);
+                if (action != null) {
+                    item = item.clone();
+                    action.accept(item);
+                }
+                guiMiddleSlot.add(item);
             }
             guiMiddleSlot.construct();
         }
     }
+
 
 }

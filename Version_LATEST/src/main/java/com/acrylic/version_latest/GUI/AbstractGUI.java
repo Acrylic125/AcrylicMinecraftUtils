@@ -69,7 +69,10 @@ public abstract class AbstractGUI {
     /**
      * Construct without gui item presets.
      */
-    public abstract void construct();
-    
+    public void construct() {
+        construct(null);
+    }
+
+    public abstract void construct(Consumer<ItemStack> action);
 
 }

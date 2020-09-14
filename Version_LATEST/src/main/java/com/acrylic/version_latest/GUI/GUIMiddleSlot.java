@@ -5,6 +5,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
 
 public class GUIMiddleSlot extends AbstractGUI {
 
@@ -47,7 +48,7 @@ public class GUIMiddleSlot extends AbstractGUI {
      * You can ignore the explanation but this method is to construct the GUI.
      */
     @Override
-    public void construct() {
+    public void construct(Consumer<ItemStack> action) {
         final int size = items.size();
         final int initialSlot = (int) (maxColumns * (initialRow - 1) + Math.floor((float) offsetSlot / 2) - 1);
         final int lastOffset = (int) ((Math.ceil((float) chunkSize / 2)) - Math.floor(((float) size % chunkSize) / 2));
@@ -71,6 +72,10 @@ public class GUIMiddleSlot extends AbstractGUI {
                 currentSlot.addAndGet(1);
             }
             index.addAndGet(1);
+            if (action != null) {
+                item = item.clone();
+                action.accept(item);
+            }
             inventory.setItem(currentSlot.get() + initialSlot,item);
         });
     }
