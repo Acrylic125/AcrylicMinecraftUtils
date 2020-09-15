@@ -74,6 +74,16 @@ public class GUIPageBuilder extends AbstractGUI {
         return this;
     }
 
+    public int getStartingIndex() {
+        return (page - 1) * getMaxItemsPerPage() + 1;
+    }
+
+    public int getEndingIndex() {
+        int lastIndex = page * getMaxItemsPerPage();
+        lastIndex = Math.min(lastIndex, items.size());
+        return lastIndex;
+    }
+
     @Override
     public GUIPageBuilder add(ItemStack item) {
         items.add(item);
@@ -83,10 +93,8 @@ public class GUIPageBuilder extends AbstractGUI {
     @Override
     public void construct(Consumer<ItemStack> action) {
         if (inventory == null) return;
-        int max = getMaxItemsPerPage();
-        int index = (page - 1) * max + 1;
-        int lastIndex = page * max;
-        lastIndex = Math.min(lastIndex, items.size());
+        int index = getStartingIndex();
+        int lastIndex = getEndingIndex();
         if (!usingMiddleSlotSystem) {
             int slot = (int) (((initialRow - 1) * 9) + Math.floor((float) offsetSlot / 2));
             for (int i = index; i <= lastIndex; i++) {
