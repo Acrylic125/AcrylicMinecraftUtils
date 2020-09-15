@@ -58,9 +58,13 @@ public abstract class AbstractGUI {
         constructAll(null);
     }
 
-    public void constructAll(Consumer<ItemStack> action) {
+    public void constructPreset() {
         inventory.clear();
         if (guiItemPresets != null) guiItemPresets.construct(this);
+    }
+
+    public void constructAll(Consumer<ItemStack> action) {
+        constructPreset();
         construct(action);
     }
 
