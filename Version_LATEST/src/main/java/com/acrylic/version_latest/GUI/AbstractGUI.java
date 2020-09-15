@@ -7,6 +7,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 @Getter
@@ -54,7 +55,7 @@ public abstract class AbstractGUI {
      * Construct with gui item presets.
      */
     public void constructAll() {
-        construct(null);
+        constructAll(null);
     }
 
     public void constructAll(Consumer<ItemStack> action) {
