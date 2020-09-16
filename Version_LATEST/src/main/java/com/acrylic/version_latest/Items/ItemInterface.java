@@ -2,6 +2,8 @@ package com.acrylic.version_latest.Items;
 
 import com.acrylic.version_latest.Annotations.Discouraged;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -59,6 +61,14 @@ public interface ItemInterface {
     ItemInterface setQuantity(int quantity);
 
     ItemMeta getIteMeta();
+
+    default ItemInterface setShiny() {
+        modifyItemMeta(meta -> {
+            meta.addEnchant((getItem().getType().equals(Material.FISHING_ROD)) ? Enchantment.OXYGEN : Enchantment.LURE, 1,true);
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        });
+        return this;
+    }
 
     default ItemInterface modifyItemMeta(Consumer<ItemMeta> action) {
         action.accept(getIteMeta());

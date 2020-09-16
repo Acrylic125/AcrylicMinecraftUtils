@@ -16,6 +16,7 @@ public class ItemUtils extends MultiStringBase {
 
     private final boolean isAir;
 
+    @Getter
     private ItemStack item;
     @Setter @Getter
     private ItemMeta itemMeta;
