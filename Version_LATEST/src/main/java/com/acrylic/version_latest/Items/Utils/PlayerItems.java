@@ -14,7 +14,7 @@ public class PlayerItems {
         if (ItemUtils.isAir(item)) return 0;
         int total = 0;
         for (ItemStack inventoryItem : getInventory(player)) {
-            if (!ItemUtils.isAir(inventoryItem)) total += inventoryItem.getAmount();
+            if (!ItemUtils.isAir(inventoryItem) && inventoryItem.isSimilar(item)) total += inventoryItem.getAmount();
         }
         return total;
     }
