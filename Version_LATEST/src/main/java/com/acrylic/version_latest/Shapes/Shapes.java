@@ -7,14 +7,13 @@ import org.bukkit.Location;
 /**
  * This class is used for general shapes
  */
-public class Shapes {
+public abstract class Shapes {
 
     protected final float radius;
-    @Setter
-    protected final Location center;
     protected final float yaw;
     protected final float amount;
 
+    protected Location center;
     @Getter
     private float centerX;
     @Getter
@@ -56,5 +55,10 @@ public class Shapes {
         }
         yaw -= 90;
         return yaw;
+    }
+
+    public void setLocation(Location location) {
+        this.center = location;
+        setup();
     }
 }
