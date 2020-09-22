@@ -20,6 +20,12 @@ public class ItemPropertyUtils extends ItemUtils {
         return hideFlags(true);
     }
 
+    public ItemPropertyUtils setUnShiny() {
+        ItemMeta meta = super.getItemMeta();
+        meta.removeEnchant((super.getItem().getType().equals(Material.FISHING_ROD)) ? Enchantment.OXYGEN : Enchantment.LURE);
+        return hideFlags(true);
+    }
+
     public ItemPropertyUtils hideFlags(boolean hide) {
         if (hide) getItemMeta().addItemFlags(ItemFlag.HIDE_ENCHANTS);
         else getItemMeta().removeItemFlags(ItemFlag.HIDE_ENCHANTS);
