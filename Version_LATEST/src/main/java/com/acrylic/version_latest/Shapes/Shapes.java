@@ -1,6 +1,7 @@
 package com.acrylic.version_latest.Shapes;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Location;
 
 /**
@@ -9,6 +10,7 @@ import org.bukkit.Location;
 public class Shapes {
 
     protected final float radius;
+    @Setter
     protected final Location center;
     protected final float yaw;
     protected final float amount;

@@ -111,6 +111,7 @@ public class ArmorEquipListeners implements Listener {
                         if (!e.getView().getType().equals(InventoryType.CRAFTING)) return;
                         if (!(ItemUtils.isAir(oldItem))) return;
                     } else {
+                        if (inventory.firstEmpty() == -1) return;
                         newItem = null;
                         if (NormalItemTypeManager.get(oldItem).getArmorSlot() != e.getRawSlot()) return;
                     }
