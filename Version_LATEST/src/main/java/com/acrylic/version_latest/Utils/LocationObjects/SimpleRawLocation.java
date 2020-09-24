@@ -29,4 +29,13 @@ public class SimpleRawLocation {
         return new Location(Bukkit.getWorld(world), x,y,z).getBlock();
     }
 
+    @Override
+    public String toString() {
+        return "SimpleRawLocation{" +
+                "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                ", world='" + world + '\'' +
+                '}';
+    }
 }

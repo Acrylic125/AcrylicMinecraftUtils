@@ -18,4 +18,12 @@ public class SimpleLocation extends SimpleRawLocation {
     public Location getLocation() {
         return new Location(Bukkit.getWorld(super.getWorld()),super.getX(),super.getY(),super.getZ(),yaw,pitch);
     }
+
+    @Override
+    public String toString() {
+        return "SimpleLocation{" +
+                "yaw=" + yaw +
+                ", pitch=" + pitch +
+                '}';
+    }
 }

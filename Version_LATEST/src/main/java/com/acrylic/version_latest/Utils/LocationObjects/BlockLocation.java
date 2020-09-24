@@ -29,4 +29,13 @@ public class BlockLocation {
         return new Location(Bukkit.getWorld(world), x,y,z).getBlock();
     }
 
+    @Override
+    public String toString() {
+        return "BlockLocation{" +
+                "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                ", world='" + world + '\'' +
+                '}';
+    }
 }
