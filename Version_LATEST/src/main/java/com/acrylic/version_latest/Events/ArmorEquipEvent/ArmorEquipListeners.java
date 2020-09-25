@@ -4,7 +4,6 @@ import com.acrylic.version_latest.Events.Exceptions.ItemIsNotAnArmor;
 import com.acrylic.version_latest.Items.Utils.ItemUtils;
 import com.acrylic.version_latest.Items.Utils.NormalItemType;
 import com.acrylic.version_latest.Items.Utils.NormalItemTypeManager;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -30,12 +29,13 @@ public class ArmorEquipListeners implements Listener {
         ItemStack newItem;
         try {
             previousItem = getArmorItem(player,normalItemType);
-            newItem = item.clone();
-            if (HOT_SWAP_ENABLED || ItemUtils.isAir(previousItem)) setArmorItem(player,normalItemType,item,(previousItem == null) ? null : previousItem.clone());
         } catch (ItemIsNotAnArmor ex) {
             return null;
         }
-        return ArmorChangeEvent.call(player,newItem,previousItem,ArmorEquipType.PHYSICAL,!ItemUtils.isAir(previousItem));
+        newItem = item.clone();
+        ArmorChangeEvent armorChangeEvent = ArmorChangeEvent.call(player,newItem,previousItem,ArmorEquipType.PHYSICAL,!ItemUtils.isAir(previousItem));;
+        if (!armorChangeEvent.isCancelled() && (HOT_SWAP_ENABLED || ItemUtils.isAir(previousItem))) setArmorItem(player,normalItemType,item,(previousItem == null) ? null : previousItem.clone());
+        return armorChangeEvent;
     }
 
     private static void setArmorItem(Player player, NormalItemType normalItemType, ItemStack item, ItemStack previousItem) {
